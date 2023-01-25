@@ -21,11 +21,15 @@ export default class Climbers extends React.Component {
                 .map(climber =>
                     <Col className="insure-block">
                         <Card>
+                            <Card.Header>
+                                {climber.name}
+                            </Card.Header>
                             <Card.Body>
                                 <Card.Link href="#" style={{height: '100'}}> <Card.Img
                                     src={climber.image}/>
-                                    <Card.Title>{climber.name} ({climber.id})</Card.Title>
+                                    <Card.Title></Card.Title>
                                     <Card.Text>
+                                        Id: {climber.id}<br/>
                                         Rok urodzenia: {climber.yearOfBirth}<br/>
                                         Kraj pochodzenia: {climber.country}<br/>
                                         Federacja: {climber.federation}
