@@ -7,7 +7,7 @@ export default class LeadResults extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:3000/results/`)
+        axios.get(`http://localhost:3000/results/lead`)
             .then(res => {
                 const results = res.data;
                 this.setState({results});
@@ -15,24 +15,18 @@ export default class LeadResults extends React.Component {
     }
 
     render() {
-        return (
-            <ul>
-                {
-                    this.state.results
-                        .map(result =>
-                            <li key={result.id}>
-                                Id: {result.id} <br/>
-                                Rok wydarzenia: {result.year + " "} <br/>
-                                ID wydarzenia: {result.competitionId} <br/>
-                                ID zawodnika: {result.climber} <br/>
-                                Czas w kwalifikacjach: {result.qualification} <br/>
-                                Czas w półfinale: {result.semiFinal} <br/>
-                                Czas w finale: {result.final} <br/>
-                            </li>
-                        )
-                }
-            </ul>
-        )
+        return (<ul>
+            {this.state.results
+                .map(result => <li key={result.id}>
+                    Id: {result.id} <br/>
+                    Rok wydarzenia: {result.year + " "} <br/>
+                    ID wydarzenia: {result.competitionId} <br/>
+                    ID zawodnika: {result.climber} <br/>
+                    Czas w kwalifikacjach: {result.qualification} <br/>
+                    Czas w półfinale: {result.semiFinal} <br/>
+                    Czas w finale: {result.final} <br/>
+                </li>)}
+        </ul>)
     }
 }
 
