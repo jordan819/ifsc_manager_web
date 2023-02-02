@@ -15,6 +15,7 @@ import SpeedResults from "../Pages/SpeedResults";
 import SpeedResultAdd from "../Pages/SpeedResultAdd";
 import BoulderResults from "../Pages/BoulderResults";
 import BoulderResultAdd from "../Pages/BoulderResultAdd";
+import ClimberDetails from "../Pages/ClimberDetails";
 
 export default class NavbarComp extends Component {
     render() {
@@ -80,6 +81,7 @@ export default class NavbarComp extends Component {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/climbers" element={<Climbers/>}/>
+                <Route path="/climbers/:climberId/details" element={<ClimberDetails/>}/>
                 <Route path="/climber-add" element={<ClimberAdd/>}/>
                 <Route path="/climber-remove" element={<ClimberRemove/>}/>
                 <Route path="/results/lead" element={<LeadResults/>}/>
