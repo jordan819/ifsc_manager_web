@@ -1,6 +1,6 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Col, Row, Card, Container} from 'react-bootstrap';
+import {Card, Col, Container, Row} from 'react-bootstrap';
 import "../css/home.css"
 import climbersList from "../img/climbers_list.png"
 import addClimber from "../img/climber_add.png"
@@ -41,7 +41,7 @@ function Home() {
                     <Col lg={4} className="insure-block">
                         <Card>
                             <Card.Body>
-                                <Card.Link href="./climber-remove" style={{height: '100'}}> <Card.Img
+                                <Card.Link href="./climbers" style={{height: '100'}}> <Card.Img
                                     src={removeClimber}/>
                                     <Card.Title>Usuń zawodnika</Card.Title>
                                     <Card.Text>

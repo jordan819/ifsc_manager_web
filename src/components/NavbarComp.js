@@ -6,7 +6,6 @@ import ErrorPage from '../Pages/ErrorPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Climbers from '../Pages/Climbers'
 import ClimberAdd from '../Pages/ClimberAdd'
-import ClimberRemove from '../Pages/ClimberRemove'
 import logo from '../img/logo.png'
 import "../css/navbar.css"
 import LeadResultAdd from "../Pages/LeadResultAdd";
@@ -51,8 +50,6 @@ export default class NavbarComp extends Component {
                                             wszystkich</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to={"/climber-add"}>Dodaj
                                             zawodnika</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/climber-remove"}>Usuń
-                                            zawodnika</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki LEAD" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/lead"}>Zobacz
@@ -83,7 +80,6 @@ export default class NavbarComp extends Component {
                 <Route path="/climbers" element={<Climbers/>}/>
                 <Route path="/climbers/:climberId/details" element={<ClimberDetails/>}/>
                 <Route path="/climber-add" element={<ClimberAdd/>}/>
-                <Route path="/climber-remove" element={<ClimberRemove/>}/>
                 <Route path="/results/lead" element={<LeadResults/>}/>
                 <Route path="/result/lead/add" element={<LeadResultAdd/>}/>
                 <Route path="/results/speed" element={<SpeedResults/>}/>

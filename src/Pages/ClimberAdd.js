@@ -9,6 +9,7 @@ export default class ClimberAdd extends React.Component {
         this.state = {
             id: 0,
             name: " ",
+            image: "",
             yearOfBirth: " ",
             country: " ",
             federation: " ",
@@ -38,8 +39,6 @@ export default class ClimberAdd extends React.Component {
             <div className='addClimber'>
                 <form onSubmit={this.handleSubmit}>
                     <h1>Dodawanie zawodnika</h1>
-                    <input type="number" name="id" placeholder='ID zawodnika' value={this.name}
-                           onChange={this.handleChange}/>
                     <input type="text" name="name" placeholder='Imię i nazwisko' value={this.name}
                            onChange={this.handleChange}/>
                     <input type="number" name="yearOfBirth" value={this.yearOfBirth} placeholder='Rok urodzenia'
@@ -48,6 +47,8 @@ export default class ClimberAdd extends React.Component {
                            onChange={this.handleChange}/>
                     <input type="text" name="federation" value={this.federation}
                            placeholder='Federacja' onChange={this.handleChange}/>
+                    <input type="text" name="image" value={this.image} placeholder='Link do zdjęcia'
+                           onChange={this.handleChange}/>
                     <button type="submit" onChange={this.handleSubmit} className="btn btn-primary">Dodaj zawodnika</button>
                 </form>
             </div>
