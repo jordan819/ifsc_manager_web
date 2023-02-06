@@ -54,19 +54,19 @@ export default class NavbarComp extends Component {
                                     <NavDropdown title="Wyniki LEAD" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/lead"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/lead/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/lead/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki SPEED" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/speed"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/speed/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/speed/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki BOULDER" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/boulder"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/boulder/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/boulder/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
@@ -81,11 +81,11 @@ export default class NavbarComp extends Component {
                 <Route path="/climbers/:climberId/details" element={<ClimberDetails/>}/>
                 <Route path="/climber-add" element={<ClimberAdd/>}/>
                 <Route path="/results/lead" element={<LeadResults/>}/>
-                <Route path="/result/lead/add" element={<LeadResultAdd/>}/>
+                <Route path="/results/lead/add" element={<LeadResultAdd/>}/>
                 <Route path="/results/speed" element={<SpeedResults/>}/>
-                <Route path="/result/speed/add" element={<SpeedResultAdd/>}/>
+                <Route path="/results/speed/add" element={<SpeedResultAdd/>}/>
                 <Route path="/results/boulder" element={<BoulderResults/>}/>
-                <Route path="/result/boulder/add" element={<BoulderResultAdd/>}/>
+                <Route path="/results/boulder/add" element={<BoulderResultAdd/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
         </Router>)

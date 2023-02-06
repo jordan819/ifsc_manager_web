@@ -26,10 +26,10 @@ export default class LeadResultAdd extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
         console.log(this.state)
-        axios.post('http://localhost:3000/results/', this.state)
+        axios.post('http://localhost:3000/results/lead', this.state)
             .then(response => {
                 console.log(response)
-                window.location.href = "./results";
+                window.location.href = ".";
             })
             .catch(error => {
                 console.log(error)
@@ -41,8 +41,6 @@ export default class LeadResultAdd extends React.Component {
             <div className='addClimber'>
                 <form onSubmit={this.handleSubmit}>
                     <h1>Dodawanie wyniku LEAD</h1>
-                    <input type="number" name="id" placeholder='Id wyniku' value={this.id}
-                           onChange={this.handleChange}/>
                     <input type="number" name="year" value={this.year} placeholder='Rok wydarzenia'
                            onChange={this.handleChange}/>
                     <input type="text" name="competitionId" value={this.competitionId} placeholder='Id wydarzenia'

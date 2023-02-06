@@ -15,21 +15,32 @@ export default class BoulderResults extends React.Component {
     }
 
     render() {
-        return (<div>
-                BOULDER RESULTS
-                <ul>
-                    {this.state.results
-                        .map(result => <li key={result.id}>
-                            Id: {result.id} <br/>
-                            Rok wydarzenia: {result.year + " "} <br/>
-                            ID wydarzenia: {result.competitionId} <br/>
-                            ID zawodnika: {result.climber} <br/>
-                            Czas w kwalifikacjach: {result.qualification} <br/>
-                            Czas w półfinale: {result.semiFinal} <br/>
-                            Czas w finale: {result.final} <br/>
-                        </li>)}
-                </ul>
-            </div>)
+        return (
+            <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+                <thead style={{ backgroundColor: '#f2f2f2' }}>
+                <tr>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>Rok wydarzenia</th>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>ID wydarzenia</th>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>ID zawodnika</th>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>Czas w kwalifikacjach</th>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>Czas w półfinale</th>
+                    <th style={{ border: '1px solid black', padding: '8px' }}>Czas w finale</th>
+                </tr>
+                </thead>
+                <tbody>
+                {this.state.results.map(result => (
+                    <tr key={result._id}>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.year}</td>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.competitionId}</td>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.climber}</td>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.qualification}</td>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.semiFinal}</td>
+                        <td style={{ border: '1px solid black', padding: '8px' }}>{result.final}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        );
     }
 }
 
