@@ -6,7 +6,6 @@ import ErrorPage from '../Pages/ErrorPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Climbers from '../Pages/Climbers'
 import ClimberAdd from '../Pages/ClimberAdd'
-import ClimberRemove from '../Pages/ClimberRemove'
 import logo from '../img/logo.png'
 import "../css/navbar.css"
 import LeadResultAdd from "../Pages/LeadResultAdd";
@@ -15,6 +14,7 @@ import SpeedResults from "../Pages/SpeedResults";
 import SpeedResultAdd from "../Pages/SpeedResultAdd";
 import BoulderResults from "../Pages/BoulderResults";
 import BoulderResultAdd from "../Pages/BoulderResultAdd";
+import ClimberDetails from "../Pages/ClimberDetails";
 
 export default class NavbarComp extends Component {
     render() {
@@ -50,25 +50,23 @@ export default class NavbarComp extends Component {
                                             wszystkich</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to={"/climber-add"}>Dodaj
                                             zawodnika</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/climber-remove"}>Usuń
-                                            zawodnika</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki LEAD" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/lead"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/lead/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/lead/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki SPEED" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/speed"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/speed/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/speed/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                     <NavDropdown title="Wyniki BOULDER" id="navbarResultsDropdown">
                                         <NavDropdown.Item as={Link} to={"/results/boulder"}>Zobacz
                                             wszystkie</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to={"/result/boulder/add"}>Dodaj
+                                        <NavDropdown.Item as={Link} to={"/results/boulder/add"}>Dodaj
                                             wynik</NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
@@ -80,14 +78,14 @@ export default class NavbarComp extends Component {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/climbers" element={<Climbers/>}/>
+                <Route path="/climbers/:climberId/details" element={<ClimberDetails/>}/>
                 <Route path="/climber-add" element={<ClimberAdd/>}/>
-                <Route path="/climber-remove" element={<ClimberRemove/>}/>
                 <Route path="/results/lead" element={<LeadResults/>}/>
-                <Route path="/result/lead/add" element={<LeadResultAdd/>}/>
+                <Route path="/results/lead/add" element={<LeadResultAdd/>}/>
                 <Route path="/results/speed" element={<SpeedResults/>}/>
-                <Route path="/result/speed/add" element={<SpeedResultAdd/>}/>
+                <Route path="/results/speed/add" element={<SpeedResultAdd/>}/>
                 <Route path="/results/boulder" element={<BoulderResults/>}/>
-                <Route path="/result/boulder/add" element={<BoulderResultAdd/>}/>
+                <Route path="/results/boulder/add" element={<BoulderResultAdd/>}/>
                 <Route path="*" element={<ErrorPage/>}/>
             </Routes>
         </Router>)

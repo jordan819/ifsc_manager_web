@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import {Card, Col} from "react-bootstrap";
+import {Card, Col, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+import "../css/home.css"
 
 export default class Climbers extends React.Component {
     state = {
@@ -8,6 +13,21 @@ export default class Climbers extends React.Component {
     }
 
     componentDidMount() {
+        this.refreshList()
+    }
+
+    handleDelete = (id) => {
+        console.log("Deleting user with id: " + id)
+        axios.delete(`http://localhost:3000/climbers/${id}`)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                this.refreshList();
+            })
+    }
+
+    refreshList = () => {
+        console.log("Fetching climbers")
         axios.get(`http://localhost:3000/climbers/`)
             .then(res => {
                 const climbers = res.data;
@@ -17,29 +37,38 @@ export default class Climbers extends React.Component {
 
     render() {
         return (
-            this.state.climbers
-                .map(climber =>
-                    <Col className="insure-block">
+            <Row>
+                {this.state.climbers.map(climber => (
+                    <Col xs={3} className="insure-block">
                         <Card>
-                            <Card.Header>
-                                {climber.name}
+                            <Card.Header style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                                <div style={{flexGrow: 1, textAlign: "center"}}>
+                                    {climber.name}
+                                </div>
+                                <Link to="#">
+                                    <FontAwesomeIcon className="trash-icon" icon={faTrash}
+                                                     onClick={() => this.handleDelete(climber._id)}/>
+                                </Link>
                             </Card.Header>
                             <Card.Body>
-                                <Card.Link href="#" style={{height: '100'}}> <Card.Img
-                                    src={climber.image}/>
-                                    <Card.Title></Card.Title>
+                                <Link to={`/climbers/${climber._id}/details`}>
+                                    <Card.Img src={climber.image}/>
+                                    <Card.Title/>
                                     <Card.Text>
-                                        Id: {climber.id}<br/>
-                                        Rok urodzenia: {climber.yearOfBirth}<br/>
-                                        Kraj pochodzenia: {climber.country}<br/>
+                                        Rok urodzenia: {climber.yearOfBirth}
+                                        <br/>
+                                        Kraj pochodzenia: {climber.country}
+                                        <br/>
                                         Federacja: {climber.federation}
                                     </Card.Text>
-                                </Card.Link>
+                                </Link>
                             </Card.Body>
                         </Card>
+
                     </Col>
-                )
-        )
+                ))}
+            </Row>
+        );
     }
 }
 

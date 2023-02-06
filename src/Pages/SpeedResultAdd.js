@@ -12,8 +12,11 @@ export default class SpeedResultAdd extends React.Component {
             competitionId: " ",
             rank: " ",
             climber: " ",
-            qualification: " ",
+            laneA: " ",
+            laneB: " ",
+            quarter: " ",
             semiFinal: " ",
+            smallFinal: " ",
             final: " ",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,10 +29,10 @@ export default class SpeedResultAdd extends React.Component {
     handleSubmit = e => {
         e.preventDefault()
         console.log(this.state)
-        axios.post('http://localhost:3000/results/', this.state)
+        axios.post('http://localhost:3000/results/speed', this.state)
             .then(response => {
                 console.log(response)
-                window.location.href = "./results";
+                window.location.href = "./";
             })
             .catch(error => {
                 console.log(error)
@@ -41,8 +44,6 @@ export default class SpeedResultAdd extends React.Component {
             <div className='addClimber'>
                 <form onSubmit={this.handleSubmit}>
                     <h1>Dodawanie wyniku SPEED</h1>
-                    <input type="number" name="id" placeholder='Id wyniku' value={this.id}
-                           onChange={this.handleChange}/>
                     <input type="number" name="year" value={this.year} placeholder='Rok wydarzenia'
                            onChange={this.handleChange}/>
                     <input type="text" name="competitionId" value={this.competitionId} placeholder='Id wydarzenia'
@@ -51,10 +52,16 @@ export default class SpeedResultAdd extends React.Component {
                            placeholder='Pozycja zawodnika' onChange={this.handleChange}/>
                     <input type="number" name="rank" value={this.climber}
                            placeholder='Id zawodnika' onChange={this.handleChange}/>
-                    <input type="text" name="qualification" value={this.qualification}
-                           placeholder='Wynik w kwalifikacjach' onChange={this.handleChange}/>
+                    <input type="text" name="laneA" value={this.qualification}
+                           placeholder='Wynik na torze A' onChange={this.handleChange}/>
+                    <input type="text" name="laneB" value={this.qualification}
+                           placeholder='Wynik na torze B' onChange={this.handleChange}/>
+                    <input type="text" name="quarter" value={this.qualification}
+                           placeholder='Wynik w ćwierćfinale' onChange={this.handleChange}/>
                     <input type="text" name="semiFinal" value={this.semiFinal}
                            placeholder='Wynik w półfinale' onChange={this.handleChange}/>
+                    <input type="text" name="smallFinal" value={this.semiFinal}
+                           placeholder='Wynik w małym finale' onChange={this.handleChange}/>
                     <input type="text" name="final" value={this.final}
                            placeholder='Wynik w finale' onChange={this.handleChange}/>
                     <button type="submit" onChange={this.handleSubmit} className="btn btn-primary">Dodaj wynik</button>

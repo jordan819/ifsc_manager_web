@@ -6,20 +6,48 @@ export default class SpeedResults extends React.Component {
         results: []
     }
 
-    // componentDidMount() {
-    //     axios.get(`http://localhost:3000/results/`)
-    //         .then(res => {
-    //             const results = res.data;
-    //             this.setState({results});
-    //         })
-    // }
+    componentDidMount() {
+        axios.get(`http://localhost:3000/results/speed`)
+            .then(res => {
+                console.log(res.data)
+                const results = res.data;
+                this.setState({results});
+            })
+    }
 
     render() {
         return (
-            <div>
-                SPEED RESULTS
-            </div>
-        )
+            <table style={{borderCollapse: 'collapse', width: '100%'}}>
+                <thead style={{backgroundColor: '#f2f2f2'}}>
+                <tr>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Rok wydarzenia</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>ID wydarzenia</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>ID zawodnika</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Tor A</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Tor B</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Czas w ćwierćfinale</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Czas w półfinale</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Czas w małym finale</th>
+                    <th style={{border: '1px solid black', padding: '8px'}}>Czas w finale</th>
+                </tr>
+                </thead>
+                <tbody>
+                {this.state.results.map(result => (
+                    <tr key={result._id}>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.year}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.competitionId}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.climber}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.laneA}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.laneB}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.quarter}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.semiFinal}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.smallFinal}</td>
+                        <td style={{border: '1px solid black', padding: '8px'}}>{result.final}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        );
     }
 }
 
